@@ -24,8 +24,9 @@
         /// </example>
         public static string IntroduceYourself(string name, int age)
         {
+            string formattedName = char.ToUpper(name[0]) + name.Substring(1).ToLower();
             // Реализовать метод для решения задачи
-            throw new NotImplementedException();
+            return $"Hello! My name is {formattedName} and i am {age} years old.";
         }
 
         // =========================
@@ -46,8 +47,8 @@
         /// </example>
         public static string CelsiusToFahrenheit(double celsius)
         {
-            // Реализовать метод для решения задачи
-            throw new NotImplementedException();
+            double fahrenheit = celsius * 9 / 5 + 32;
+            return $"{celsius}C = {fahrenheit.ToString("F1", System.Globalization.CultureInfo.InvariantCulture)}F";
         }
 
         /// <summary>
@@ -142,8 +143,21 @@
         /// </example>
         public static string GetSeason(int month)
         {
-            // Реализовать метод для решения задачи
-            throw new NotImplementedException();
+            string season;
+            if (month < 1 || month > 12)
+            {
+                return $"Месяц {month} - Не существует";
+            }
+            if (month == 12 || month == 1 || month ==2)
+               season = "Зима";
+            else if (month >= 3 && month <= 5)
+               season = "Весна";
+            else if (month >= 6 && month <= 8)
+               season = "Лето";
+            else
+            season = "Осень";
+
+            return $"Месяц {month} - {season}";
         }
 
         /// <summary>
@@ -241,8 +255,34 @@
         /// </example>
         public static string GetMinMaxDigit(int number)
         {
-            // Реализовать метод для решения задачи
-            throw new NotImplementedException();
+            int minDigit = 9;
+            int maxDigit = 0;
+            int temp = Math.Abs(number);
+
+            if (temp == 0)
+            {
+                minDigit = 0;
+                maxDigit = 0;
+            }
+
+            while (temp > 0)
+            {
+                int digit = temp % 10;
+
+                if (digit < minDigit)
+                {
+                    minDigit = digit;
+                }
+
+                if (digit > maxDigit)
+                { 
+                    maxDigit = digit;
+                }
+
+                temp = temp / 10;
+            }
+
+            return $"Число: {number}, минимальная цифра: {minDigit}, максимальная цифра: {maxDigit}";
         }
 
         /// <summary>
@@ -343,8 +383,16 @@
         /// </example>
         public static string SumOfGreaterThen(int[] array, int filter)
         {
-            // Реализовать метод для решения задачи
-            throw new NotImplementedException();
+            int count = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > filter)
+                {
+                    count++;
+                }
+            }
+
+            return $"Количество Элементов Больших {filter} = {count}";
         }
 
         /// <summary>
